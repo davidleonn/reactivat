@@ -5,10 +5,14 @@ on:
     branches: [master, feature/**]
   pull_request:
     branches: [master]
+  workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/frontend # Directs all commands to your project folder
 
     steps:
       - uses: actions/checkout@v4
@@ -18,18 +22,16 @@ jobs:
         with:
           node-version: 22
           cache: "npm"
+          cache-dependency-path: src/frontend/package-lock.json
 
       - name: Install dependencies
-        # We use --legacy-peer-deps to handle the ESLint/React 19 conflicts we saw earlier
         run: npm install --legacy-peer-deps
 
       - name: Check Formatting (Prettier)
-        # This assumes you have a "format:check" or "prettier" script in package.json
         run: npx prettier --check .
 
       - name: Lint (ESLint)
         run: npm run lint
 
       - name: Run Tests (Vitest)
-        # We use 'run' mode for CI to ensure it exits after one execution
         run: npm run test:ci
