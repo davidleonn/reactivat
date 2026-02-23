@@ -23,8 +23,6 @@ jobs:
         with:
           node-version: 22
           cache: "npm"
-          # Fixed: Path must match the location of your lockfile relative to the root
-          cache-dependency-path: reactivat/frontend/package-lock.json
 
       - name: Install dependencies
         # Added --legacy-peer-deps to handle potential React 19 conflicts seen earlier
