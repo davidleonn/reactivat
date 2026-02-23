@@ -6,9 +6,13 @@ export function Hero() {
       aria-label="Introducció"
       className="relative flex min-h-[95vh] items-center justify-center overflow-hidden bg-slate-900 px-6 text-center"
     >
-      {/* Background Image - with a richer overlay */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img src="/hero-bg.jpg" alt="Clínica Reactiva't" className="h-full w-full object-cover opacity-30 grayscale-[20%]" />
+        <img
+          src="/hero-bg.jpg"
+          alt="Clínica Reactiva't" // Matches your failing test exactly
+          className="h-full w-full object-cover opacity-30 grayscale-20"
+        />
         <div className="absolute inset-0 bg-linear-to-b from-slate-900/40 via-transparent to-slate-900/60" />
       </div>
 
@@ -18,7 +22,6 @@ export function Hero() {
           Clínica de Fisioteràpia Avançada
         </div>
 
-        {/* Massive Web Heading */}
         <h1 className="text-5xl leading-[1.1] font-extrabold tracking-tight text-balance text-white sm:text-7xl lg:text-8xl">
           FISIOTERÀPIA <br className="hidden lg:block" />
           <span className="bg-linear-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">I OSTEOPATIA</span>
@@ -35,15 +38,14 @@ export function Hero() {
             rel="noopener noreferrer"
             className="group flex items-center gap-3 rounded-full bg-green-500 px-10 py-5 text-xl font-black text-white shadow-2xl transition-all hover:scale-105 hover:bg-green-600"
           >
-            <CalendarCheck size={28} />
+            <CalendarCheck size={28} aria-hidden="true" />
             RESERVA CITA ARA
           </a>
         </div>
       </div>
 
-      {/* Decorative "Scroll Down" for Web Experience */}
       <div className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 animate-bounce md:block">
-        <ChevronDown size={32} className="text-white/40" />
+        <ChevronDown size={32} className="text-white/40" aria-hidden="true" />
       </div>
     </section>
   );
