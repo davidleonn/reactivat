@@ -18,8 +18,6 @@ jobs:
         with:
           node-version: 22
           cache: "npm"
-          cache-dependency-path: |
-            src/frontend/package-lock.json
 
       - name: Install dependencies
         # We use --legacy-peer-deps to handle the ESLint/React 19 conflicts we saw earlier
