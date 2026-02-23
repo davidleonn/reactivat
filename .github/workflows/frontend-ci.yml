@@ -2,22 +2,21 @@ name: CI (Lint, Format, Test)
 
 on:
   push:
-    branches: [main, master, feature/**]
+    branches: [master, feature/**]
   pull_request:
-    branches: [main, master]
+    branches: [master]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: "20" # Matches modern React 19 / Vite requirements
+          node-version: 22
           cache: "npm"
 
       - name: Install dependencies
